@@ -1,13 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import './App.css';
 import { TaskRow } from './components/TaskRow'
-import { TaskBanner } from './components/TaskBanner'
 import { TaskCreator } from './components/TaskCreator'
 import { VisibilityControl } from './components/VisibilityControl'
+import Home from './home'
 
 function App() {
-
-  const [userName, setUserName] = useState('Juan Diego');
   const [taskItems, setTaskItems] = useState([
     { name : 'Do the landry', done : false },
     { name : 'Babysis stepsister', done : false },
@@ -22,7 +19,6 @@ function App() {
      if(data != null ) {
        setTaskItems(JSON.parse(data))
      } else{
-       setUserName('JD')
        setTaskItems([
         { name : 'Do the landry', done : false },
         { name : 'Babysis stepsister', done : false },
@@ -59,8 +55,8 @@ function App() {
 
   return (
     <>
-          <div>
-      <TaskBanner userName={userName} taskItems={taskItems} />
+        <div>
+      <Home taskItems={taskItems} />
       <TaskCreator callback={createNewTask} />
       <table className="table table-striped table-border">
           <thead>
